@@ -24,7 +24,7 @@ print(send_pkt)
 
 skt = socket.socket(family=socket.AF_INET, type=socket.SOCK_DGRAM)
 
-bytes_send = skt.sendto(send_pkt, (remote_ip, remote_port))
+bytes_send = skt.sendto(send_pkt, (proxy_ip, proxy_port))
 
 max_bytes = 4096
 (response,src_addr) = skt.recvfrom(max_bytes)
@@ -32,5 +32,6 @@ max_bytes = 4096
 print('----------- this is response[RAW] -----------')
 print(response)
 print('----------- this is response[decoded] -----------')
-print(dnslib.DNSRecord.parse(response))
+
+print(dnslib.DNSRecord.parse(response[10:]))
 skt.close()
