@@ -9,7 +9,7 @@ import dnslib
 # this function without socks5 tcp 
 remote_ip = "8.8.8.8"
 remote_port = 53
-proxy_ip = "192.168.1.140"
+proxy_ip = "127.0.0.1"
 proxy_port = 11223
 qname="www.google.com"
 
@@ -18,7 +18,7 @@ print('----------- this is request[RAW] -----------')
 print(pkt)
 
 pre_header = bytearray(b'\x00\x00\x00\x01')
-send_pkt = pre_header + bytearray(map(int, remote_ip.split('.'))) + struct.pack(">H", 53) + pkt
+send_pkt = pre_header + bytearray(map(int, remote_ip.split('.'))) + struct.pack(">H", proxy_port) + pkt
 print('----------- this is full request[RAW] -----------')
 print(send_pkt)
 
