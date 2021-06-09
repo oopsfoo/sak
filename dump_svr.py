@@ -2,7 +2,7 @@ import socket
 import socketserver
 import threading
 
-from pyhexdump import hexdump 
+from hexdump import hexdump 
 
 # requirement:
 #   pip install pyhexdump 
@@ -21,8 +21,6 @@ class UdpHandler(socketserver.DatagramRequestHandler):
     
     def handle(self):
         print('------------recv UDP pkt[RAW] -------------')
-        print(self.request)
-        print(self.request[0])
         hexdump(self.request[0])
 
 tcp_svr = socketserver.TCPServer((server_ip, server_port), TcpHandler)
