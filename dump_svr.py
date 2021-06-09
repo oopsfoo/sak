@@ -4,9 +4,6 @@ import threading
 
 from hexdump import hexdump 
 
-# requirement:
-#   pip install pyhexdump 
-
 server_ip = "127.0.0.1"
 server_port = 11223 
 
